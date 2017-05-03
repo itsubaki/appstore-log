@@ -1,4 +1,3 @@
-
 function clear() {
   d3.selectAll("svg").remove();
   d3.selectAll("text").remove();
@@ -9,7 +8,7 @@ function draw_ranking() {
   clear()
 
   var query = document.form.data.value;
-  d3.json(base + "/ranking/search?query=" + query + "&output=json", function(error, dataset) {
+  d3.json(ranking_url + "&query=" + query, function(error, dataset) {
     d3.select('.content')
       .append('text')
       .html(JSON.stringify(dataset))
@@ -20,7 +19,7 @@ function draw_review() {
   clear()
 
   var id = document.form.data.value;
-  d3.json(base + "/review/search?id=" + id + "&output=json&limit=200", function(error, data) {
+  d3.json(review_url + "&id=" + id, function(error, data) {
 
     var svg = d3
       .select('.container')
