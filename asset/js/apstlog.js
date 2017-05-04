@@ -1,5 +1,3 @@
-
-
 function clear() {
   d3.selectAll('div').remove()
   d3.selectAll('svg').remove()
@@ -8,7 +6,7 @@ function clear() {
 }
 
 function init() {
-  d3.json(review_list_url, function(error, data) {
+  d3.json(base_url + "/review?output=json", function(error, data) {
     for (var id of data) {
       d3.select('select')
         .append('option')
@@ -20,7 +18,7 @@ function init() {
 
 function draw_review_all() {
   clear()
-  d3.json(review_list_url, function(error, data) {
+  d3.json(base_url + "/review?output=json", function(error, data) {
     for (var id of data) {
       d3.select('body')
         .append('div')
@@ -34,7 +32,7 @@ function draw_review_all() {
 }
 
 function draw_review(id) {
-  d3.json(review_url + "&id=" + id, function(error, data) {
+  d3.json(base_url + "/review/search?output=json&limit=200&id=" + id, function(error, data) {
 
     d3.select("#id" + id)
       .append('h4')
