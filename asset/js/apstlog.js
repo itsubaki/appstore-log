@@ -1,11 +1,19 @@
 function clear() {
-  d3.selectAll("svg").remove();
-  d3.selectAll("h4").remove();
-  d3.selectAll("br").remove();
+  d3.selectAll('div').remove()
+  d3.selectAll('svg').remove()
+  d3.selectAll('h4').remove()
+  d3.selectAll('br').remove()
 }
 
 function draw_review_all() {
+  clear()
   d3.json(review_list_url, function(error, data) {
+    for (var id of data) {
+      d3.select('body')
+        .append('div')
+        .attr('class', 'container')
+        .attr('id', "id" + id)
+    }
     for (var id of data) {
       draw_review(id)
     }
@@ -15,15 +23,14 @@ function draw_review_all() {
 function draw_review(id) {
   d3.json(review_url + "&id=" + id, function(error, data) {
 
-    d3.select('.container')
+    d3.select("#id" + id)
       .append('h4')
       .html(id)
 
-    d3.select('.container')
+    d3.select("#id" + id)
       .append('br')
 
-    var svg = d3
-      .select('.container')
+    var svg = d3.select("#id" + id)
       .append('svg')
       .attr('width', 900)
       .attr('height', 200)
@@ -56,8 +63,6 @@ function draw_review(id) {
       })
       .style('opacity', 0.2)
 
-    d3.select('.container')
-      .append('br')
   })
 }
 
@@ -68,5 +73,10 @@ function onClick_draw_review() {
     draw_review_all()
     return
   }
+
+  d3.select('body')
+    .append('div')
+    .attr('class', 'container')
+    .attr('id', "id" + id)
   draw_review(id)
 }
