@@ -2,4 +2,3 @@ app.yaml
 cron.yaml
 index.yaml
 asset/js/variable.js
-asset/template/index.tmpl

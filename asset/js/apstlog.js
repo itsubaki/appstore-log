@@ -1,8 +1,21 @@
+
+
 function clear() {
   d3.selectAll('div').remove()
   d3.selectAll('svg').remove()
   d3.selectAll('h4').remove()
   d3.selectAll('br').remove()
+}
+
+function init() {
+  d3.json(review_list_url, function(error, data) {
+    for (var id of data) {
+      d3.select('select')
+        .append('option')
+        .attr('value', id)
+        .html(id)
+    }
+  })
 }
 
 function draw_review_all() {

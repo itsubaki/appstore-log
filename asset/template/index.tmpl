@@ -1,0 +1,30 @@
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>apstlog</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/apstlog.js" charset="utf-8"></script>
+  <script src="js/variable.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <form name="form" id="form" action="">
+    <select name="data" id="data" onChange="onClick_draw_review();">
+      <option value="all">All</option>
+    </select>
+  </form>
+  </br>
+
+  <script type="text/javascript">
+    init();
+    draw_review_all();
+  </script>
+</body>
+
+</html>
