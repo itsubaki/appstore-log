@@ -1,25 +1,26 @@
 function clear() {
   d3.selectAll("svg").remove();
-  d3.selectAll("text").remove();
+  d3.selectAll("h4").remove();
+  d3.selectAll("br").remove();
 }
 
-
-function draw_ranking() {
-  clear()
-
-  var query = document.form.data.value;
-  d3.json(ranking_url + "&query=" + query, function(error, dataset) {
-    d3.select('.content')
-      .append('text')
-      .html(JSON.stringify(dataset))
+function draw_review_all() {
+  d3.json(review_list_url, function(error, data) {
+    for (var id of data) {
+      draw_review(id)
+    }
   })
 }
 
-function draw_review() {
-  clear()
-
-  var id = document.form.data.value;
+function draw_review(id) {
   d3.json(review_url + "&id=" + id, function(error, data) {
+
+    d3.select('.container')
+      .append('h4')
+      .html(id)
+
+    d3.select('.container')
+      .append('br')
 
     var svg = d3
       .select('.container')
@@ -54,6 +55,18 @@ function draw_review() {
 
       })
       .style('opacity', 0.2)
-  })
 
+    d3.select('.container')
+      .append('br')
+  })
+}
+
+function onClick_draw_review() {
+  clear()
+  var id = document.form.data.value
+  if (id == "all") {
+    draw_review_all()
+    return
+  }
+  draw_review(id)
 }
