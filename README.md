@@ -25,4 +25,4 @@ var base_url = "https://${PRODJECT_ID}.appspot.com"
 
 ## Make GAE Application
 
-See [apstlog](https://github.com/itsubaki/apstlog.git)
+See [apstlib](https://github.com/itsubaki/apstlib.git)
