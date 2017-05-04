@@ -32,18 +32,19 @@ function draw_review_all() {
 }
 
 function draw_review(id) {
-  d3.json(base_url + "/review/search?output=json&limit=200&id=" + id, function(error, data) {
+  var url = base_url + "/review/search?limit=200&id=" + id
+  d3.json(url + "&output=json", function(error, data) {
 
     d3.select("#id" + id)
       .append('h4')
-      .html(id)
+      .html("<a href=\"" + url + "\">" + id + "</a>")
 
     d3.select("#id" + id)
       .append('br')
 
     var svg = d3.select("#id" + id)
       .append('svg')
-      .attr('width', 900)
+      .attr('width', 1100)
       .attr('height', 200)
 
     svg.selectAll("circle")
