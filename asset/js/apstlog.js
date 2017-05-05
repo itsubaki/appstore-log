@@ -74,7 +74,10 @@ function draw_review(id) {
 
       })
       .style('opacity', 0.2)
-
+      .append('title')
+      .text(function(d) {
+        return d.Content
+      })
   })
 }
 
