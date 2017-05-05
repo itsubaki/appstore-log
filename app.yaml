@@ -12,12 +12,8 @@ handlers:
 - url: /favicon.ico
   static_files: asset/image/favicon.ico
   upload: asset/image/favicon.ico
-- url: /css
-  static_dir: asset/css
 - url: /js
   static_dir: asset/js
-- url: /fonts
-  static_dir: asset/fonts
 - url: /.*
   script: _go_app
   login: admin

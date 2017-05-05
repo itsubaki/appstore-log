@@ -1,5 +1,4 @@
 function init() {
-
   // google analytics
   (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
@@ -32,17 +31,17 @@ function clear() {
   d3.selectAll('h4').remove()
   d3.selectAll('br').remove()
 
-/*
-  d3.select('body')
-    .append('div')
-    .attr('id', 'tooltip')
-    .attr('class', 'btn btn-default')
-    .attr('data-toggle', 'tooltip')
-    .attr('data-placement', 'top')
-    .style('position', 'absolute')
-    .style('z-index', '10')
-    .style('visibility', 'hidden')
-*/
+  /*
+    d3.select('body')
+      .append('div')
+      .attr('id', 'tooltip')
+      .attr('class', 'btn btn-default')
+      .attr('data-toggle', 'tooltip')
+      .attr('data-placement', 'top')
+      .style('position', 'absolute')
+      .style('z-index', '10')
+      .style('visibility', 'hidden')
+  */
 
 }
 
@@ -98,7 +97,6 @@ function review(id) {
           case '5':
             return 'green'
         }
-
       })
       .style('opacity', 0.2)
       .append('title')

@@ -21,6 +21,8 @@ $ git clone https://github.com/itsubaki/apstlog.git
 ```javascript
 // asset/js/variable.js
 var base_url = "https://${PRODJECT_ID}.appspot.com"
+var ua = "${GOOGLE_ANALYTICS_TRACKING_CODE}"
+// or remove google analytics snippet in apstlog.js
 ```
 
 ## Make GAE Application
