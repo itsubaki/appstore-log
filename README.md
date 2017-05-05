@@ -29,6 +29,6 @@ var ua = "${GOOGLE_ANALYTICS_TRACKING_CODE}"
 
 See [apstlib](https://github.com/itsubaki/apstlib.git)
 
-## Example
+## Sample
 
 ![](./sample.png)
