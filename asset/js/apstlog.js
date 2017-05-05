@@ -1,16 +1,28 @@
 function clear() {
-  d3.selectAll('div').remove()
-  d3.selectAll('svg').remove()
-  d3.selectAll('h4').remove()
-  d3.selectAll('br').remove()
+  d3.selectAll("div").remove()
+  d3.selectAll("svg").remove()
+  d3.selectAll("h4").remove()
+  d3.selectAll("br").remove()
+
+  d3.select("body")
+    .append("div")
+    .attr("id", "tooltip")
+    .attr("class", "btn btn-default")
+    .attr("data-container", "body")
+    .attr("data-toggle", "tooltip")
+    .attr("data-placement", "top")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+
 }
 
 function init() {
   d3.json(base_url + "/review?output=json", function(error, data) {
     for (var id of data) {
-      d3.select('select')
-        .append('option')
-        .attr('value', id)
+      d3.select("select")
+        .append("option")
+        .attr("value", id)
         .html(id)
     }
   })
@@ -18,12 +30,13 @@ function init() {
 
 function draw_review_all() {
   clear()
+
   d3.json(base_url + "/review?output=json", function(error, data) {
     for (var id of data) {
-      d3.select('body')
-        .append('div')
-        .attr('class', 'container')
-        .attr('id', "id" + id)
+      d3.select("body")
+        .append("div")
+        .attr("class", "container")
+        .attr("id", "id" + id)
     }
     for (var id of data) {
       draw_review(id)
@@ -36,29 +49,29 @@ function draw_review(id) {
   d3.json(url + "&output=json", function(error, data) {
 
     d3.select("#id" + id)
-      .append('h4')
+      .append("h4")
       .html("<a href=\"" + url + "\">" + id + "</a>")
 
     d3.select("#id" + id)
-      .append('br')
+      .append("br")
 
     var svg = d3.select("#id" + id)
-      .append('svg')
-      .attr('width', 1100)
-      .attr('height', 200)
+      .append("svg")
+      .attr("width", 1100)
+      .attr("height", 200)
 
     svg.selectAll("circle")
       .data(data)
       .enter()
-      .append('circle')
-      .attr('cx', function(d, i) {
+      .append("circle")
+      .attr("cx", function(d, i) {
         return 30 + (i * 15)
       })
-      .attr('cy', 100)
-      .attr('r', function(d) {
+      .attr("cy", 100)
+      .attr("r", function(d) {
         return d.Content.length / 5
       })
-      .attr('fill', function(d) {
+      .attr("fill", function(d) {
         switch (d.Rating) {
           case "1":
             return "red"
@@ -73,11 +86,25 @@ function draw_review(id) {
         }
 
       })
-      .style('opacity', 0.2)
-      .append('title')
-      .text(function(d) {
-        return d.Content
+      .style("opacity", 0.2)
+      .on("mouseover", function(d) {
+        return d3.select("#tooltip")
+          .style("visibility", "visible")
+          .text(d.Content)
       })
+      .on("mousemove", function() {
+        return d3.select("#tooltip")
+          .style("top", (event.pageY - 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mouseout", function() {
+        return d3.select("#tooltip")
+          .style("visibility", "hidden");
+      });
+    //      .append("title")
+    //      .text(function(d) {
+    //        return d.Content
+    //      })
   })
 }
 
@@ -89,9 +116,9 @@ function onClick_draw_review() {
     return
   }
 
-  d3.select('body')
-    .append('div')
-    .attr('class', 'container')
-    .attr('id', "id" + id)
+  d3.select("body")
+    .append("div")
+    .attr("class", "container")
+    .attr("id", "id" + id)
   draw_review(id)
 }
