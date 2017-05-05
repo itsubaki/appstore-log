@@ -8,7 +8,6 @@ function clear() {
     .append("div")
     .attr("id", "tooltip")
     .attr("class", "btn btn-default")
-    .attr("data-container", "body")
     .attr("data-toggle", "tooltip")
     .attr("data-placement", "top")
     .style("position", "absolute")
@@ -48,15 +47,11 @@ function draw_review(id) {
   var url = base_url + "/review/search?limit=200&id=" + id
   d3.json(url + "&output=json", function(error, data) {
 
-    d3.select("#id" + id)
-      .append("h4")
-      .html("<a href=\"" + url + "\">" + id + "</a>")
+    var div = d3.select("#id" + id)
+    div.append("h4").html("<a href=\"" + url + "\">" + id + "</a>")
+    div.append("br")
 
-    d3.select("#id" + id)
-      .append("br")
-
-    var svg = d3.select("#id" + id)
-      .append("svg")
+    var svg = div.append("svg")
       .attr("width", 1100)
       .attr("height", 200)
 
@@ -87,24 +82,28 @@ function draw_review(id) {
 
       })
       .style("opacity", 0.2)
-      .on("mouseover", function(d) {
-        return d3.select("#tooltip")
-          .style("visibility", "visible")
-          .text(d.Content)
+      .append("title")
+      .text(function(d) {
+        return d.Content
       })
-      .on("mousemove", function() {
-        return d3.select("#tooltip")
-          .style("top", (event.pageY - 10) + "px")
-          .style("left", (event.pageX + 10) + "px");
-      })
-      .on("mouseout", function() {
-        return d3.select("#tooltip")
-          .style("visibility", "hidden");
-      });
-    //      .append("title")
-    //      .text(function(d) {
-    //        return d.Content
-    //      })
+
+    /*
+          .on("mouseover", function(d) {
+            return d3.select("#tooltip")
+              .style("visibility", "visible")
+            //.attr("title", d.Content)
+            //.text(d.Content)
+          })
+          .on("mousemove", function() {
+            return d3.select("#tooltip")
+              .style("top", (event.pageY - 10) + "px")
+              .style("left", (event.pageX + 10) + "px");
+          })
+          .on("mouseout", function() {
+            return d3.select("#tooltip")
+              .style("visibility", "hidden");
+          })
+          */
   })
 }
 
