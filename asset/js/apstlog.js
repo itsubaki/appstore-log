@@ -27,7 +27,7 @@ function init() {
   })
 }
 
-function draw_review_all() {
+function review_all() {
   clear()
 
   d3.json(base_url + "/review?output=json", function(error, data) {
@@ -38,12 +38,12 @@ function draw_review_all() {
         .attr("id", "id" + id)
     }
     for (var id of data) {
-      draw_review(id)
+      review(id)
     }
   })
 }
 
-function draw_review(id) {
+function review(id) {
   var url = base_url + "/review/search?limit=200&id=" + id
   d3.json(url + "&output=json", function(error, data) {
 
@@ -107,11 +107,11 @@ function draw_review(id) {
   })
 }
 
-function onClick_draw_review() {
+function onChange_review() {
   clear()
   var id = document.form.data.value
   if (id == "all") {
-    draw_review_all()
+    review_all()
     return
   }
 
@@ -119,5 +119,5 @@ function onClick_draw_review() {
     .append("div")
     .attr("class", "container")
     .attr("id", "id" + id)
-  draw_review(id)
+  review(id)
 }
