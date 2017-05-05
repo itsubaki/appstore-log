@@ -31,7 +31,7 @@ See [apstlib](https://github.com/itsubaki/apstlib.git)
 
 ## Sample
 
- - color: blue(Rating:5), green(4), black(3), orange(2), red(1)
+ - color: green(Rating:5), blue(4), black(3), orange(2), red(1)
  - radius: review comment length
  - x axis: time series(new <-------> old)
 
