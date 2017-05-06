@@ -101,7 +101,9 @@ function review(id) {
       .style('opacity', 0.2)
       .append('title')
       .text(function(d) {
-        return d.Content
+        return '[' + d.Rating + ']' + d.Title + '\n' +
+          d.Content + '\n' +
+          d.Author + '/' + d.Updated
       })
 
     /*
