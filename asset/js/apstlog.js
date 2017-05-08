@@ -49,10 +49,12 @@ function review_all() {
   clear()
 
   d3.json(base_url + '/review?output=json', function(error, data) {
+    var container = d3.select('body')
+      .append('div')
+      .attr('class', 'container-fluid')
     for (var id of data) {
-      d3.select('body')
-        .append('div')
-        .attr('class', 'container')
+      container.append('div')
+        .attr('class', 'row')
         .attr('id', 'id' + id)
     }
     for (var id of data) {
@@ -70,7 +72,7 @@ function review(id) {
     div.append('br')
 
     var svg = div.append('svg')
-      .attr('width', 1100)
+      .attr('width', 1200)
       .attr('height', 200)
 
     svg.selectAll('circle')
@@ -136,7 +138,9 @@ function onChange_review() {
 
   d3.select('body')
     .append('div')
-    .attr('class', 'container')
+    .attr('class', 'container-fluid')
+    .append('div')
+    .attr('class', 'row')
     .attr('id', 'id' + id)
   review(id)
 }

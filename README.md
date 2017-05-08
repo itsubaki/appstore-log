@@ -4,7 +4,7 @@ app store log viewer
 ## Required
 
 - go 1.8
-- GCP Account and Project
+- GCP Account
 - Cloud SDK
 
 # How to Build
