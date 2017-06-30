@@ -5,7 +5,7 @@ function init() {
       d3.select('select')
         .append('option')
         .attr('value', app.ID)
-        .html(app.Name)
+        .html(app.ID)
     }
   })
 }
@@ -43,17 +43,17 @@ function review_all() {
         .attr('id', 'id' + app.ID)
     }
     for (var app of data) {
-      review(app)
+      review(app.ID, app.Name)
     }
   })
 }
 
-function review(app) {
-  var url = base_url + '/review/search?limit=200&id=' + app.ID
+function review(id, name) {
+  var url = base_url + '/review/search?limit=200&id=' + id
   d3.json(url + '&output=json', function(error, data) {
 
-    var div = d3.select('#id' + app.ID)
-    div.append('h4').html('<a href=\'' + url + '\'>' + app.Name + '</a>')
+    var div = d3.select('#id' + id)
+    div.append('h4').html('<a href=\'' + url + '\'>' + name + '</a>')
     div.append('br')
 
     var svg = div.append('svg')
@@ -127,5 +127,5 @@ function onChange_review() {
     .append('div')
     .attr('class', 'row')
     .attr('id', 'id' + id)
-  review(id)
+  review(id, id)
 }
