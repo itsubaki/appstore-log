@@ -1,11 +1,11 @@
 function init() {
   // option
-  d3.json(base_url + '/review?output=json', function(error, data) {
-    for (var id of data) {
+  d3.json(base_url + '/app?output=json', function(error, data) {
+    for (var app of data) {
       d3.select('select')
         .append('option')
-        .attr('value', id)
-        .html(id)
+        .attr('value', app.ID)
+        .html(app.Name)
     }
   })
 }
@@ -33,27 +33,27 @@ function clear() {
 function review_all() {
   clear()
 
-  d3.json(base_url + '/review?output=json', function(error, data) {
+  d3.json(base_url + '/app?output=json', function(error, data) {
     var container = d3.select('body')
       .append('div')
       .attr('class', 'container-fluid')
-    for (var id of data) {
+    for (var app of data) {
       container.append('div')
         .attr('class', 'row')
-        .attr('id', 'id' + id)
+        .attr('id', 'id' + app.ID)
     }
-    for (var id of data) {
-      review(id)
+    for (var app of data) {
+      review(app)
     }
   })
 }
 
-function review(id) {
-  var url = base_url + '/review/search?limit=200&id=' + id
+function review(app) {
+  var url = base_url + '/review/search?limit=200&id=' + app.ID
   d3.json(url + '&output=json', function(error, data) {
 
-    var div = d3.select('#id' + id)
-    div.append('h4').html('<a href=\'' + url + '\'>' + id + '</a>')
+    var div = d3.select('#id' + app.ID)
+    div.append('h4').html('<a href=\'' + url + '\'>' + app.Name + '</a>')
     div.append('br')
 
     var svg = div.append('svg')
