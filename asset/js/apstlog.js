@@ -121,11 +121,17 @@ function onChange_review() {
     return
   }
 
-  d3.select('body')
-    .append('div')
-    .attr('class', 'container-fluid')
-    .append('div')
-    .attr('class', 'row')
-    .attr('id', 'id' + id)
-  review(id, id)
+  d3.json(base_url + '/app?output=json', function(error, data) {
+    for (var app of data) {
+      if (app.ID == id) {
+        d3.select('body')
+          .append('div')
+          .attr('class', 'container-fluid')
+          .append('div')
+          .attr('class', 'row')
+          .attr('id', 'id' + app.ID)
+        review(app.ID, app.Name)
+      }
+    }
+  })
 }
