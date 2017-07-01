@@ -5,11 +5,11 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/itsubaki/apstlib"
+	"github.com/itsubaki/apstapi"
 )
 
 func init() {
-	apstlib.AppEngine()
+	apstapi.AppEngine()
 	http.HandleFunc("/", root)
 }
 
