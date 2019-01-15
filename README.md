@@ -1,4 +1,4 @@
-# apstlog
+# appstore-log
 app store log viewer
 
 ## Required
@@ -11,8 +11,8 @@ app store log viewer
 ## Install
 
 ```console
-$ go get github.com/itsubaki/apstweb
-$ git clone https://github.com/itsubaki/apstlog.git
+$ go get github.com/itsubaki/appstore-api
+$ git clone https://github.com/itsubaki/appstore-log.git
 ```
 
 ## Setting
@@ -25,7 +25,7 @@ var tracking_code = "${GOOGLE_ANALYTICS_TRACKING_CODE}"
 
 ## Make GAE Application
 
-See [apstweb](https://github.com/itsubaki/apstweb)
+See [appstore-api](https://github.com/itsubaki/appstore-api)
 
 ## Sample
 

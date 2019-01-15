@@ -1,15 +1,15 @@
-package apstlog
+package appstorelog
 
 import (
 	"fmt"
 	"html/template"
 	"net/http"
 
-	"github.com/itsubaki/apstweb"
+	api "github.com/itsubaki/appstore-api"
 )
 
 func init() {
-	apstweb.AppEngine()
+	api.Init()
 	http.HandleFunc("/", root)
 }
 
