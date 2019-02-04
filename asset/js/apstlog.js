@@ -15,19 +15,6 @@ function clear() {
   d3.selectAll('svg').remove()
   d3.selectAll('h4').remove()
   d3.selectAll('br').remove()
-
-  /*
-    d3.select('body')
-      .append('div')
-      .attr('id', 'tooltip')
-      .attr('class', 'btn btn-default')
-      .attr('data-toggle', 'tooltip')
-      .attr('data-placement', 'top')
-      .style('position', 'absolute')
-      .style('z-index', '10')
-      .style('visibility', 'hidden')
-  */
-
 }
 
 function review_all() {
@@ -92,24 +79,6 @@ function review(id, name) {
           d.Content + '\n' +
           d.Author + '/' + d.Updated
       })
-
-    /*
-          .on('mouseover', function(d) {
-            return d3.select('#tooltip')
-              .style('visibility', 'visible')
-            //.attr('title', d.Content)
-            //.text(d.Content)
-          })
-          .on('mousemove', function() {
-            return d3.select('#tooltip')
-              .style('top', (event.pageY - 10) + 'px')
-              .style('left', (event.pageX + 10) + 'px');
-          })
-          .on('mouseout', function() {
-            return d3.select('#tooltip')
-              .style('visibility', 'hidden');
-          })
-          */
   })
 }
 

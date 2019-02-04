@@ -20,7 +20,6 @@ $ git clone https://github.com/itsubaki/appstore-log.git
 ```javascript
 // asset/js/variable.js
 var base_url = "https://${PRODJECT_ID}.appspot.com"
-var tracking_code = "${GOOGLE_ANALYTICS_TRACKING_CODE}"
 ```
 
 ## Make GAE Application
