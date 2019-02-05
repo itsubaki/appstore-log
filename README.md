@@ -1,5 +1,5 @@
 # appstore-log
-app store log viewer
+appstore log viewer
 
 ## Required
 
