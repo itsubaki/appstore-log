@@ -1,6 +1,6 @@
 function init() {
   // option
-  d3.json(base_url + '/app?output=json', function(error, data) {
+  d3.json(base_url + '/app?format=json', function(error, data) {
     for (var app of data) {
       d3.select('select')
         .append('option')
@@ -20,7 +20,7 @@ function clear() {
 function review_all() {
   clear()
 
-  d3.json(base_url + '/app?output=json', function(error, data) {
+  d3.json(base_url + '/app?format=json', function(error, data) {
     var container = d3.select('body')
       .append('div')
       .attr('class', 'container-fluid')
@@ -37,7 +37,7 @@ function review_all() {
 
 function review(id, name) {
   var url = base_url + '/review/search?limit=200&id=' + id
-  d3.json(url + '&output=json', function(error, data) {
+  d3.json(url + '&format=json', function(error, data) {
 
     var div = d3.select('#id' + id)
     div.append('h4').html('<a href=\'' + url + '\'>' + name + '</a>')
@@ -90,7 +90,7 @@ function onChange_review() {
     return
   }
 
-  d3.json(base_url + '/app?output=json', function(error, data) {
+  d3.json(base_url + '/app?format=json', function(error, data) {
     for (var app of data) {
       if (app.ID == id) {
         d3.select('body')
