@@ -1,10 +1,10 @@
 # appstore-log
-appstore log viewer
+
+ - AppStore Review Viewer Server with GAE
 
 ## Required
 
-- go 1.8
-- GCP Account
+ - go 1.8
 
 # How to Build
 
